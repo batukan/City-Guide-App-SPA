@@ -1,1 +1,25 @@
-<p>city works!</p>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let city of cities" class="col-md-4">
+            <div class="card my-4">
+                <img class="card-img-top"
+                src="{{city.photoUrl}}" alt="Card Image Cap"
+                >
+                <div class="card-body">
+                    <p class="card-text">
+                        {{city.description}}
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        
+                        <small class="text-muted"><i class="far fa-clock text-light"></i> 9 mins</small>
+                        <small class="text">{{city.name}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
