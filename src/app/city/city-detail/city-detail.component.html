@@ -1,9 +1,11 @@
 <main role="main" class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h2 class="mt-2 pt-2">Photos</h2>
+            <ngx-gallery *ngIf="galleryImages" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            <div *ngIf="!galleryImages">*ngIf="galleryImages"</div>
         </div>
-        <div class="col-md-6">
+        <div *ngIf="city" class="col-md-4">
             <h2 class="mt-2 pt-2">Trip Notes</h2>
             <p>
                 {{city.description}}

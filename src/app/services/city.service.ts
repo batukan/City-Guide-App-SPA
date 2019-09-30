@@ -11,7 +11,7 @@ export class CityService {
 
   constructor(private httpClient: HttpClient) {
   }
-  path = "https://localhost:44301/api/";
+  path = "http://localhost:5000/api/";
 
   getCities(): Observable<City[]> {
     return this.httpClient.get<City[]>(this.path + "cities");
@@ -20,6 +20,9 @@ export class CityService {
     return this.httpClient.get<City>(this.path + "cities/detail/?id=" + cityId);
   }
   getPhotosByCity(cityId): Observable<Photo[]> {
-    return this.httpClient.get<Photo[]>(this.path + "cities/photos/cityId=" + cityId);
+    return this.httpClient.get<Photo[]>(this.path + "cities/photos?cityId=" + cityId);
+  }
+  add(city) {
+    this.httpClient.post(this.path + "cities/add", city).subscribe();
   }
 }
