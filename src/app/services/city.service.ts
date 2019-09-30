@@ -4,12 +4,18 @@ import { Observable } from 'rxjs';
 import { City } from '../models/city';
 import { Photo } from '../models/photo';
 
+import { AlertifyService } from 'src/app/services/alertify.service';
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient,
+    private alertifyService: AlertifyService,
+    private router: Router, ) {
   }
   path = "http://localhost:5000/api/";
 
@@ -23,6 +29,9 @@ export class CityService {
     return this.httpClient.get<Photo[]>(this.path + "cities/photos?cityId=" + cityId);
   }
   add(city) {
-    this.httpClient.post(this.path + "cities/add", city).subscribe();
+    this.httpClient.post(this.path + "cities/add", city).subscribe(data => {
+      this.alertifyService.success("City Added Successfully.");
+      this.router.navigateByUrl('/cityDetail/' + data["id"]);
+    });
   }
 }
