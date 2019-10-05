@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginUser } from '../models/loginUser';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { AlertifyService } from './alertify.service';
 import { RegisterUser } from '../models/registerUser';
@@ -20,7 +20,7 @@ export class AuthService {
   path = "http://localhost:5000/api/auth";
   userToken: any;
   decodedToken: any;
-  jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelper: JwtHelperService = new JwtHelperService();
   TOKEN_KEY: "token";
 
   login(loginUser: LoginUser) {
@@ -53,7 +53,7 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_KEY);
   }
   loggedIn() {
-    return tokenNotExpired(this.TOKEN_KEY);
+    return this.jwtHelper.isTokenExpired(this.TOKEN_KEY);
   }
   get token() {
     return localStorage.getItem(this.TOKEN_KEY);
