@@ -14,26 +14,26 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    private alertifyService: AlertifyService
+    private alertifyService: AlertifyService,
   ) { }
 
-  path = "http://localhost:5000/api/auth";
-  userToken: any;
+  path = "http://localhost:5000/api/Auth/";
   decodedToken: any;
   jwtHelper: JwtHelperService = new JwtHelperService();
-  TOKEN_KEY: "token";
+  TOKEN_KEY = "token";
 
   login(loginUser: LoginUser) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     this.httpClient
-      .post(this.path + "login", loginUser, { headers: headers })
+      .post(this.path + "login", loginUser, { headers: headers, responseType: 'text' })
       .subscribe(data => {
-        this.saveToken(data['tokenString']),
-          this.userToken = data['tokenString'],
-          this.decodedToken = this.jwtHelper.decodeToken(data['tokenString']),
-          this.alertifyService.success("Welcome"),
-          this.router.navigateByUrl('/city')
+        this.saveToken(data)
+        this.decodedToken = this.jwtHelper.decodeToken(data)
+        this.alertifyService.success("Welcome")
+        this.router.navigateByUrl('/city')
+      }, error => {
+        this.alertifyService.error("Failed to log in")
       });
   }
   register(registerUser: RegisterUser) {
@@ -47,16 +47,16 @@ export class AuthService {
   }
 
   saveToken(token) {
-    localStorage.setItem(this.TOKEN_KEY, token);
+    sessionStorage.setItem(this.TOKEN_KEY, token);
   }
   logOut() {
-    localStorage.removeItem(this.TOKEN_KEY);
+    sessionStorage.removeItem(this.TOKEN_KEY);
   }
   loggedIn() {
-    return this.jwtHelper.isTokenExpired(this.TOKEN_KEY);
+    return this.token && !this.jwtHelper.isTokenExpired(this.token);
   }
   get token() {
-    return localStorage.getItem(this.TOKEN_KEY);
+    return sessionStorage.getItem(this.TOKEN_KEY);
   }
   getCurrentUserId() {
     return this.jwtHelper.decodeToken(this.token).nameid;

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,9 @@ import { FooterComponent } from './footer/footer.component';
 import { CityDetailComponent } from './city/city-detail/city-detail.component';
 import { CityAddComponent } from './city/city-add/city-add.component';
 import { AlertifyService } from './services/alertify.service';
-
+import { AuthInterceptor } from './services/auth.interceptor';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +31,15 @@ import { AlertifyService } from './services/alertify.service';
     NgxGalleryModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
+    FontAwesomeModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [AlertifyService],
+  providers: [AlertifyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faArrowRight, faPen, faMapMarkerAlt, faSignInAlt);
+
+  }
+}
