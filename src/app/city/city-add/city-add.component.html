@@ -12,14 +12,16 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="description" formControlName="description" class="form-control"
-                        placeholder="Enter description">
+                    <app-ngx-editor class="form-control" id="description" formControlName="description"
+                        [placeholder]="'Enter text here...'" [spellcheck]="true">
+                    </app-ngx-editor>
                     <span class="help-block"
                         *ngIf="cityAddForm.get('description').hasError('required')&&cityAddForm.get('description').touched">
                         Enter a valid description
                     </span>
                 </div>
-                <button type="submit" class=" btn btn-outline-secondary btn-block" [disabled]="!cityAddForm.valid">Submit</button>
+                <button type="submit" class=" btn btn-outline-secondary btn-block"
+                    [disabled]="!cityAddForm.valid">Submit</button>
             </form>
         </div>
     </div>
