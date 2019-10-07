@@ -16,6 +16,9 @@ import { AlertifyService } from './services/alertify.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { RegisterComponent } from './register/register.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { from } from 'rxjs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,8 @@ import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt, faSignOutAlt } from '
     CityComponent,
     FooterComponent,
     CityDetailComponent,
-    CityAddComponent
+    CityAddComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,7 @@ import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt, faSignOutAlt } from '
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    NgxEditorModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AlertifyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
