@@ -15,7 +15,7 @@ import { CityAddComponent } from './city/city-add/city-add.component';
 import { AlertifyService } from './services/alertify.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,7 @@ import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt } from '@fortawesome/f
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faArrowRight, faPen, faMapMarkerAlt, faSignInAlt);
+    library.addIcons(faArrowRight, faPen, faMapMarkerAlt, faSignInAlt, faSignOutAlt);
 
   }
 }

@@ -26,6 +26,10 @@
                     Login
                 </button>
             </form>
+            <button *ngIf="isAuthenticated" (click)="logOut()" class="btn btn-sm btn-secondary my-2 my-sm-0">
+                    <fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon>
+                Log Out
+            </button>
         </div>
     </div>
 </nav>

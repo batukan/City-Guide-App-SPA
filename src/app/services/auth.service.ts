@@ -51,6 +51,7 @@ export class AuthService {
   }
   logOut() {
     sessionStorage.removeItem(this.TOKEN_KEY);
+    this.alertifyService.error("Logged out");
   }
   loggedIn() {
     return this.token && !this.jwtHelper.isTokenExpired(this.token);
