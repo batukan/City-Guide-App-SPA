@@ -10,10 +10,12 @@ import { City } from 'src/app/models/city';
   providers: [CityService]
 })
 export class CityAddComponent implements OnInit {
+  
 
   constructor(
     private cityService: CityService,
     private formBuilder: FormBuilder,
+    
   ) { }
 
   city: City;
@@ -27,7 +29,7 @@ export class CityAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createCityForm();
+    this.createCityForm();    
   }
   add() {
     if (this.cityAddForm.valid) {

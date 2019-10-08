@@ -47,17 +47,17 @@ export class AuthService {
   }
 
   saveToken(token) {
-    sessionStorage.setItem(this.TOKEN_KEY, token);
+    localStorage.setItem(this.TOKEN_KEY, token);
   }
   logOut() {
-    sessionStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.TOKEN_KEY);
     this.alertifyService.error("Logged out");
   }
   loggedIn() {
     return this.token && !this.jwtHelper.isTokenExpired(this.token);
   }
   get token() {
-    return sessionStorage.getItem(this.TOKEN_KEY);
+    return localStorage.getItem(this.TOKEN_KEY);
   }
   getCurrentUserId() {
     return this.jwtHelper.decodeToken(this.token).nameid;

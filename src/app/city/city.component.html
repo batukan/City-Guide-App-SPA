@@ -5,8 +5,7 @@
                 <img class="card-img-top" src="{{city.photoUrl}}" style="height: 100% ; width:100%;"
                     alt="Card Image Cap">
                 <div class="card-body">
-                    <p class="card-text">
-                        {{city.description}}
+                    <p class="card-text" [innerHTML]='city.description | safeUrl'>
                     </p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">

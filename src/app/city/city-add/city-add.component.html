@@ -1,7 +1,7 @@
 <main role="main">
     <div class="container my-3 py-3">
         <div class="row">
-            <form [formGroup]="cityAddForm" (ngSubmit)="add()" class="">
+            <form [formGroup]="cityAddForm" (ngSubmit)="add()" class="form-cityadd">
                 <h2 class="mt-3 pt-3">City Add</h2>
                 <div class="form-group">
                     <input type="text" id="name" formControlName="name" class="form-control"
@@ -11,10 +11,9 @@
                         Enter a valid city name
                     </span>
                 </div>
-                <div class="form-group">
-                    <app-ngx-editor class="form-control" id="description" formControlName="description"
-                        [placeholder]="'Enter text here...'" [spellcheck]="true">
-                    </app-ngx-editor>
+                <div class="">
+                    <p-editor class="form-control" placeholder="enter a valid description" 
+                        formControlName="description" [style]="{'height':'320px'}"></p-editor>
                     <span class="help-block"
                         *ngIf="cityAddForm.get('description').hasError('required')&&cityAddForm.get('description').touched">
                         Enter a valid description

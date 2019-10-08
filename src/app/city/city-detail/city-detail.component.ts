@@ -15,7 +15,9 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 })
 export class CityDetailComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private cityService: CityService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private cityService: CityService) { }
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];

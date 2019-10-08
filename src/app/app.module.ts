@@ -18,7 +18,8 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faPen, faMapMarkerAlt, faArrowRight, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { RegisterComponent } from './register/register.component';
 import { NgxEditorModule } from 'ngx-editor';
-import { from } from 'rxjs';
+import { EditorModule } from 'primeng/editor';
+import { SafeUrl } from './pipes/safeUrl.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { from } from 'rxjs';
     FooterComponent,
     CityDetailComponent,
     CityAddComponent,
-    RegisterComponent
+    RegisterComponent,
+    SafeUrl
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { from } from 'rxjs';
     ReactiveFormsModule,
     FontAwesomeModule,
     NgxEditorModule,
+    EditorModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AlertifyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

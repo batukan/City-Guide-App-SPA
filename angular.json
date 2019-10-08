@@ -24,14 +24,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootswatch/dist/darkly/bootstrap.min.css",
-              "node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/alertify.js/dist/css/alertify.css"
+              "node_modules/alertify.js/dist/css/alertify.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [
-              "node_modules/alertify.js/dist/js/alertify.js"
+              "node_modules/alertify.js/dist/js/alertify.js",
+              "node_modules/quill/dist/quill.js"
             ]
           },
           "configurations": {
@@ -126,6 +130,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "CityGuide-SPA"
 }
